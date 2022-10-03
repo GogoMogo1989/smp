@@ -6,23 +6,16 @@ import React, { useState } from 'react';
 const Tab1: React.FC = () => {
 
 
-  const initialValues = {
-    input_id1:"",
-    input_id2: "", 
-    input_id3:""
-  }
+  const {register, handleSubmit, formState: {errors}} = useForm()
 
-  const {register, handleSubmit}= useForm({
-    defaultValues : initialValues
-  })
-
+ 
   const onSubmit = (data:any) => {
     alert(JSON.stringify(data, null, 2));
   };
+
+
   
-
   const [showModal, setShowModal] = useState(false);
-
 
   return (
     <IonPage>
@@ -50,18 +43,18 @@ const Tab1: React.FC = () => {
           <form onSubmit={handleSubmit(onSubmit)}>
           <IonCardContent>
             <IonItem>
-                <IonLabel>Title1</IonLabel>
+                <IonLabel>Input ID1</IonLabel>
                 <IonInput {...register("input_id1", { required: true })}  />
             </IonItem>
             <IonItem>
-                <IonLabel>Title2</IonLabel>
+                <IonLabel>Input ID2</IonLabel>
                 <IonInput {...register("input_id2", { required: true })} />
             </IonItem>
             <IonItem>
-                <IonLabel>Title3</IonLabel>
+                <IonLabel>Input ID3</IonLabel>
                 <IonInput {...register("input_id3", { required: true })}  />
             </IonItem>
-          <IonButton type="submit">SAVE</IonButton>
+          <IonButton type="submit" onClick={()=>setShowModal(true)}>SAVE</IonButton>
           </IonCardContent>
           </form>
 
