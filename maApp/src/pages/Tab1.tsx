@@ -5,19 +5,16 @@ import React, { useState } from 'react';
 
 const Tab1: React.FC = () => {
 
-
-  const {register, handleSubmit, formState: {errors}} = useForm()
-
- 
-  const onSubmit = (data:any) => {
-    alert(JSON.stringify(data, null, 2));
-  };
-
-
   const [title1, setTitle] = useState("")
   const [title2, setTitle2] = useState("")
   const [title3, setTitle3] = useState("")
   const [showModal, setShowModal] = useState(false);
+
+  const {register, handleSubmit, formState: {errors}} = useForm()
+
+  const onSubmit = (data:any) => {
+    alert(JSON.stringify(data, null, 2));
+  };
 
   return (
     <IonPage>
@@ -33,7 +30,7 @@ const Tab1: React.FC = () => {
             SMP Trial task, React + Ionic
           </IonCardHeader>
 
-
+          
           <IonContent>
             <IonModal isOpen={showModal}>
               <p>"input_id1":"{title1}"</p>
