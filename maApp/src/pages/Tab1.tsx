@@ -14,27 +14,33 @@ const Tab1: React.FC = () => {
   };
 
 
-  
+  const [title1, setTitle] = useState("")
+  const [title2, setTitle2] = useState("")
+  const [title3, setTitle3] = useState("")
   const [showModal, setShowModal] = useState(false);
 
   return (
     <IonPage>
       <IonHeader>
         <IonToolbar>
-          <IonTitle>Input practises</IonTitle>
+          <IonTitle>Kovács-Farkas Dávid</IonTitle>
         </IonToolbar>
       </IonHeader>
+
       <IonContent fullscreen>
         <IonCard>
           <IonCardHeader>
-            Test Input Form
+            SMP Trial task, React + Ionic
           </IonCardHeader>
 
 
           <IonContent>
             <IonModal isOpen={showModal}>
+              <p>"input_id1":"{title1}"</p>
+              <p>"input_id2":"{title2}"</p>
+              <p>"input_id3":"{title3}"</p>
               <IonButton onClick={() => setShowModal(false)}>
-                  Close Modal
+                  Close
               </IonButton>
             </IonModal>
           </IonContent>
@@ -43,18 +49,28 @@ const Tab1: React.FC = () => {
           <form onSubmit={handleSubmit(onSubmit)}>
           <IonCardContent>
             <IonItem>
-                <IonLabel>Input ID1</IonLabel>
-                <IonInput {...register("input_id1", { required: true })}  />
+                <IonLabel>Input_ID1</IonLabel>
+                <IonInput required 
+                          value={title1}
+                          onIonInput = {(e:any) => setTitle(e.target.value)}
+                          {...register("input_id1", { required: true })}
+                          />
             </IonItem>
             <IonItem>
-                <IonLabel>Input ID2</IonLabel>
-                <IonInput {...register("input_id2", { required: true })} />
+                <IonLabel>Input_ID2</IonLabel>
+                <IonInput required 
+                          value={title2}
+                          onIonInput = {(e:any) => setTitle2(e.target.value)}
+                          {...register("input_id2", { required: true })} />
             </IonItem>
             <IonItem>
-                <IonLabel>Input ID3</IonLabel>
-                <IonInput {...register("input_id3", { required: true })}  />
+                <IonLabel>Input_ID3</IonLabel>
+                <IonInput required 
+                          value={title3}
+                          onIonInput = {(e:any) => setTitle3(e.target.value)}
+                          {...register("input_id3", { required: true })}  />
             </IonItem>
-          <IonButton type="submit" onClick={()=>setShowModal(true)}>SAVE</IonButton>
+            <IonButton type="submit" onClick={()=>setShowModal(true)}>Submit</IonButton>
           </IonCardContent>
           </form>
 
